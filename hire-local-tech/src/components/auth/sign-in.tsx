@@ -10,7 +10,7 @@ export function SignIn() {
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
-      await signIn("google", { callbackUrl: "/dashboard" });
+      await signIn("google", { callbackUrl: "/" });
     } catch (error) {
       console.error("Failed to sign in with Google:", error);
     } finally {

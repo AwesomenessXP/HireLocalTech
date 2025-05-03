@@ -43,6 +43,10 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+.title-stroke-black {
+  -webkit-text-stroke: 0px white; /* border */
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

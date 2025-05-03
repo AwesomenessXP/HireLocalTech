@@ -7,11 +7,11 @@ export default async function LoginPage() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    redirect("/dashboard");
+    redirect("/");
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center mt-[-2rem]">
       <div className="w-full max-w-md space-y-8 rounded-lg border p-6 shadow-lg">
         <div className="text-center">
           <h1 className="text-2xl font-bold">Find local tech jobs</h1>

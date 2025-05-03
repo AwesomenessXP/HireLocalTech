@@ -14,7 +14,7 @@ export default function Home() {
           {/* On mobile: stack in a flex row */}
           <div className="flex sm:block items-center gap-4 pt-6">
             {/* Title */}
-            <h1 className=" z-10 text-left text-3xl sm:text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-rose-600 drop-shadow leading-tight">
+            <h1 className=" z-10 text-left text-3xl sm:text-1xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-rose-600 drop-shadow leading-tight">
               The tech job board<br />for the Central Valley.
             </h1>
 

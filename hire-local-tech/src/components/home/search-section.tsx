@@ -12,6 +12,15 @@ export function SearchSection() {
       </div>
     </div>
 
+    {/* Middle: Search input */}
+    <div className="w-full sm:w-[250px]">
+      <input
+        type="text"
+        placeholder="Search job titles..."
+        className="w-full px-3 py-2 border rounded-lg text-sm bg-gray-50"
+      />
+    </div>
+
     {/* Right side: Remote + Search button */}
     <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
       <span className="px-3 py-[6px] rounded-full border text-sm leading-tight text-center">Remote</span>

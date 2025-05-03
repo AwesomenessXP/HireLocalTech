@@ -12,9 +12,9 @@ export default async function Header() {
   const session = await getServerSession(authOptions)
 
   return (
-    <header className="w-full border-b bg-[#eff8f8]">
+    <header className="w-full border-b bg-[#f3f4f6]">
       <div className="flex items-center justify-between h-14 px-4">
-        <Link href="/" className="font-outfit text-base flex items-center gap-2">
+        <Link href="/" className="font-outfit font-regular text-gray-700 flex items-center gap-2">
           <Image
             src="/hire-local-tech-logo.jpg"
             alt="HireLocalTech Logo"

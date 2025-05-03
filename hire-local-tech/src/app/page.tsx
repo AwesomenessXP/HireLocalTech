@@ -15,7 +15,7 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 pt-6 text-center sm:text-left">
           {/* Text */}
           <div className="z-10">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-rose-600 drop-shadow leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1E3A8A] to-[#3B82F6] drop-shadow leading-tight">
               The tech job board<br />for the Central Valley.
             </h1>
             <p className="mt-2 text-gray-700 sm:text-lg md:text-xl text-sm font-medium">
@@ -35,17 +35,17 @@ export default function Home() {
             />
           </div>
         </div>
-  
 
-          {/* Search + Categories */}
-          <div className="mt-6 sm:absolute sm:top-[200px] left-1/2 transform sm:-translate-x-1/2 w-full">
-            <div className="flex flex-col gap-y-3 sm:gap-y-4 max-w-4xl mx-auto px-4">
-              <SearchSection />
-              <CategorySuggestions />
-            </div>
-          </div>
         </div>
       </div>
+
+{/* Search + Categories */}
+<div className="mt-6 md:absolute md:top-[250px] left-1/2 md:transform md:-translate-x-1/2 w-full">
+  <div className="flex flex-col gap-y-3 md:gap-y-4 max-w-4xl mx-auto px-4">
+    <SearchSection />
+    <CategorySuggestions />
+  </div>
+</div>
 
       {/* Main Content */}
       <div className="w-full px-6 sm:container sm:mx-auto sm:px-6 py-3">

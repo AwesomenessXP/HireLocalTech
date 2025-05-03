@@ -6,8 +6,8 @@ export function SearchSection() {
     {/* Left side: Selected categories */}
     <div className="flex-1">
       <div className="flex flex-wrap gap-2 items-center">
-        <span className="px-3 py-[6px] rounded-full bg-[#E1F7E9] text-sm leading-tight">Sales</span>
-        <span className="px-3 py-[6px] rounded-full bg-[#FFE5F7] text-sm leading-tight">Marketing</span>
+        <span className="px-3 py-[6px] rounded-full bg-[#E1F7E9] text-sm leading-tight">Software</span>
+        <span className="px-3 py-[6px] rounded-full bg-[#FFE5F7] text-sm leading-tight">IT Support</span>
         <button className="px-3 py-[6px] text-gray-500 text-sm leading-tight">+ Add more categories</button>
       </div>
     </div>

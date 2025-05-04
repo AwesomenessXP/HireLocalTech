@@ -15,11 +15,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/jobs" className="hover:underline">
-                  Job Listings
-                </Link>
-              </li>
-              <li>
                 <Link href="/about" className="hover:underline">
                   About Us
                 </Link>
@@ -37,7 +32,7 @@ export function Footer() {
                   href="mailto:support@greenfieldtechjobs.com"
                   className="hover:underline"
                 >
-                  support@greenfieldtechjobs.com
+                  support@hirelocaltech.com
                 </a>
               </li>
               <li>

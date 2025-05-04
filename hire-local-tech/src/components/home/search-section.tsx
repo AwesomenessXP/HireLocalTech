@@ -1,33 +1,29 @@
 import { Button } from "@/components/ui/button";
+import { CategoryButton } from "@/components/ui/category-button";
 
 export function SearchSection() {
   return (
-  <div className="flex flex-col gap-4 p-2 border rounded-lg bg-white sm:flex-row sm:items-center sm:justify-between">
-    {/* Left side: Selected categories */}
-    <div className="flex-1">
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="px-3 py-[6px] rounded-full bg-[#E1F7E9] text-sm leading-tight">Software</span>
-        <span className="px-3 py-[6px] rounded-full bg-[#FFE5F7] text-sm leading-tight">IT Support</span>
-        <button className="px-3 py-[6px] text-gray-500 text-sm leading-tight">+ Add more categories</button>
+    <div className="flex flex-col gap-4 p-2 border rounded-lg bg-white sm:flex-row sm:items-center sm:justify-between">
+      {/* Left side: Selected categories */}
+      <div className="flex-1">
+        <div className="flex flex-wrap gap-2 items-center">
+          <CategoryButton text="Software" color="#E1F7E9" />
+          <CategoryButton text="IT Support" color="#FFE5F7" />
+          <button className="px-3 py-[6px] text-gray-500 text-sm leading-tight">+ Add more categories</button>
+        </div>
+      </div>
+
+      {/* Middle + Right: Search input and Button */}
+      <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto sm:flex-1 sm:items-center">
+        <input
+          type="text"
+          placeholder="Search job titles..."
+          className="flex-1 min-w-[150px] px-3 py-2 border rounded-lg text-sm bg-gray-50"
+        />
+        <Button className="bg-black text-white rounded-full w-full sm:w-auto">
+          Search
+        </Button>
       </div>
     </div>
-
-    {/* Middle: Search input */}
-    <div className="w-full sm:w-[250px]">
-      <input
-        type="text"
-        placeholder="Search job titles..."
-        className="w-full px-3 py-2 border rounded-lg text-sm bg-gray-50"
-      />
-    </div>
-
-    {/* Right side: Remote + Search button */}
-    <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
-      <span className="px-3 py-[6px] rounded-full border text-sm leading-tight text-center">Remote</span>
-      <Button className="bg-black text-white rounded-full w-full sm:w-auto">
-        Search
-      </Button>
-    </div>
-  </div>
   );
 } 

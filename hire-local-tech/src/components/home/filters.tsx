@@ -11,7 +11,7 @@ export function Filters() {
   const [location, setLocation] = useState("");
 
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4 py-4">
       <span className="font-medium text-sm sm:text-base">Filter by:</span>
       <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-4 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
         <FilterDropdown 
@@ -33,13 +33,13 @@ export function Filters() {
           onChange={setJobType}
         />
         <FilterDropdown 
-          label="Experience level" 
-          options={["Entry Level", "Mid Level", "Senior Level", "Lead"]}
+          label="Experience" 
+          options={["Junior", "Mid Level", "Senior", "Lead"]}
           value={experience}
           onChange={setExperience}
         />
         <FilterDropdown 
-          label="On-site / Remote" 
+          label="Work Setting" 
           options={["On-site", "Remote", "Hybrid"]}
           value={location}
           onChange={setLocation}

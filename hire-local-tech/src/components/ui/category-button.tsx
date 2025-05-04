@@ -7,12 +7,13 @@ interface CategoryButtonProps {
   text: string;
   color: string;
   onClick?: () => void;
+  added?: boolean;
 }
 
-export function CategoryButton({ text, color, onClick }: CategoryButtonProps) {
+export function CategoryButton({ text, color, onClick, added = false}: CategoryButtonProps) {
   const [selected, setSelected] = useState(false);
 
-  const handleToggle = () => {
+  const handleToggle = () => {    
     setSelected((prev) => !prev);
     if (selected && onClick) {
       onClick(); // Optional: only fire when unselecting
@@ -26,7 +27,7 @@ export function CategoryButton({ text, color, onClick }: CategoryButtonProps) {
       onClick={handleToggle}
     >
       <span>{text}</span>
-      {selected && (
+      {added && (
         <X className="w-3.5 h-3.5 ml-1 text-gray-600 hover:text-gray-800" />
       )}
     </span>

@@ -1,24 +1,50 @@
+'use client'
+
+import { FilterDropdown } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
+
 export function Filters() {
+  const [datePosted, setDatePosted] = useState("");
+  const [salary, setSalary] = useState("");
+  const [jobType, setJobType] = useState("");
+  const [experience, setExperience] = useState("");
+  const [location, setLocation] = useState("");
+
   return (
     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4">
       <span className="font-medium text-sm sm:text-base">Filter by:</span>
       <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-4 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-        <select className="px-3 sm:px-4 py-2 border rounded-lg bg-white text-sm min-w-[120px] sm:min-w-0">
-          <option>Date posted</option>
-        </select>
-        <select className="px-3 sm:px-4 py-2 border rounded-lg bg-white text-sm min-w-[120px] sm:min-w-0">
-          <option>Salary</option>
-        </select>
-        <select className="px-3 sm:px-4 py-2 border rounded-lg bg-white text-sm min-w-[120px] sm:min-w-0">
-          <option>Job type</option>
-        </select>
-        <select className="px-3 sm:px-4 py-2 border rounded-lg bg-white text-sm min-w-[120px] sm:min-w-0">
-          <option>Experience level</option>
-        </select>
-        <select className="px-3 sm:px-4 py-2 border rounded-lg bg-white text-sm min-w-[120px] sm:min-w-0">
-          <option>On-site / Remote</option>
-        </select>
+        <FilterDropdown 
+          label="Date posted" 
+          options={["Last 24 hours", "Last 7 days", "Last 30 days"]}
+          value={datePosted}
+          onChange={setDatePosted}
+        />
+        <FilterDropdown 
+          label="Salary" 
+          options={["$50k+", "$75k+", "$100k+", "$125k+"]}
+          value={salary}
+          onChange={setSalary}
+        />
+        <FilterDropdown 
+          label="Job type" 
+          options={["Full-time", "Part-time", "Contract", "Internship"]}
+          value={jobType}
+          onChange={setJobType}
+        />
+        <FilterDropdown 
+          label="Experience level" 
+          options={["Entry Level", "Mid Level", "Senior Level", "Lead"]}
+          value={experience}
+          onChange={setExperience}
+        />
+        <FilterDropdown 
+          label="On-site / Remote" 
+          options={["On-site", "Remote", "Hybrid"]}
+          value={location}
+          onChange={setLocation}
+        />
       </div>
     </div>
   );
-} 
+}

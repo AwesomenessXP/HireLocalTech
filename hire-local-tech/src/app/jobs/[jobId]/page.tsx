@@ -4,10 +4,19 @@ import { ApplyNowButton } from "@/components/jobs/apply-button";
 import { JobBreadcrumb } from "@/components/jobs/job-breadcrumb";
 import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
 
+interface Job {
+  title: string;
+  company: string;
+  logo_url: string;
+  location: string;
+  applicants: number;
+  long_description: string;
+  tags: string[];
+}
 
 export default async function JobDetailPage({ params }: { params: { jobId: string } }) {
     const { jobId } = await params;
-    const job = await fetchJobById(jobId);
+    const job = await fetchJobById(jobId) as Job;
     if (!job) return <div className="p-6">Job not found</div>;
 
     return (

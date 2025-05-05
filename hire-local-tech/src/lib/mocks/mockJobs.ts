@@ -180,5 +180,10 @@ _Join us and shape the digital future of the Central Valley._
 ];
 
 export async function fetchJobById(slug: string) {
-    return mockJobs.find((job) => job.slug === slug) || null;
+    return new Promise((resolve) => {
+        setTimeout(() => {
+          const job = mockJobs.find((job) => job.slug === slug) || null;
+          resolve(job);
+        }, 100);
+      });
 }

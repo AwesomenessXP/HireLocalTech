@@ -4,15 +4,20 @@ import { ApplyNowButton } from "@/components/jobs/apply-button";
 import { JobBreadcrumb } from "@/components/jobs/job-breadcrumb";
 import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
 
-interface Job {
-  title: string;
-  company: string;
-  logo_url: string;
-  location: string;
-  applicants: number;
-  long_description: string;
-  tags: string[];
-}
+export interface Job {
+    id: string;
+    slug: string;
+    title: string;
+    company: string;
+    description: string;
+    long_description: string;
+    tags: string[];
+    logo_url: string;
+    location: string;
+    applicants: number;
+    date_posted: string; // ISO date string
+    salary: [number, number]; // Tuple: [min, max]
+  }
 
 export default async function JobDetailPage({ params }: { params: { jobId: string } }) {
     const { jobId } = await params;

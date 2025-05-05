@@ -1,27 +1,43 @@
 'use client'
 
+import { useRouter } from 'next/navigation';
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { getRelativeTime } from "@/lib/utils/date";
 
 interface JobCardProps {
+  id: string;
+  slug: string;
   title: string;              // Job title (e.g., "Frontend Developer")
   company: string;            // Company name (e.g., "ValleyTech Co.")
   description: string;        // Short job summary/description
+  long_description: string;  // Long job description
+  date_posted: string;        // Date posted
   tags: string[];             // List of tags (e.g., ["Full-time", "Remote", "Senior"])
   iconBgColor?: string;       // Optional background color for the icon block
-  onApply?: () => void;       // Optional click handler for the Apply button
 }
 
 export function JobCard({
+  id,
+  slug,
   title,
   company,
   description,
+  date_posted,
   tags,
   iconBgColor = "#E1F7E9",
-  onApply,
 }: JobCardProps) {
+
+  const router = useRouter();
+
+  const handleCardClick = () => {
+    router.push(`/jobs/${slug}`);
+  };
+
+  const postedAgo = getRelativeTime(date_posted);
+
   return (
-    <Card className="mt-4">
+    <Card className="mt-4 hover:shadow-md transition cursor-pointer" onClick={handleCardClick}>
       <CardHeader className="flex flex-row justify-between items-start space-y-0">
         <div className="flex gap-4">
           <div
@@ -47,15 +63,18 @@ export function JobCard({
           <div>
             <CardTitle className="text-xl">{title}</CardTitle>
             <p className="text-gray-600 text-sm">{company}</p>
+            <p className="text-gray-400 text-xs mt-1">Posted {postedAgo}</p>
           </div>
         </div>
+
         <Button
-          onClick={onApply}
+          onClick={handleCardClick}
           className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white hover:brightness-105"
         >
           Apply <span className="ml-1">→</span>
         </Button>
       </CardHeader>
+
       <CardContent>
         <p className="text-gray-700 mt-2">{description}</p>
         <div className="flex gap-2 mt-4 flex-wrap">

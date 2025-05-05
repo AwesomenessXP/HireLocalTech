@@ -21,7 +21,7 @@ const CategoryContext = createContext<CategoryContextValue | undefined>(undefine
 const initialCategories: Category[] = [
   { name: "Software", selected: true, color: "#E1F7E9" },
   { name: "IT Support", selected: true, color: "#FFE5F7" },
-  { name: "Sysadmin", selected: true, color: "#FFD580" },
+  { name: "Sysadmin", selected: true, color: "#FFF2E5" },
   { name: "Data Analytics", selected: false, color: "#FAFFA5" },
   { name: "CRM", selected: false, color: "#E5F3FF" },
   { name: "Cybersecurity", selected: false, color: "#F0E5FF" },

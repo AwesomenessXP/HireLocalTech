@@ -21,6 +21,7 @@ export interface Job {
 
 export default async function JobDetailPage({ params }: { params: { jobId: string } }) {
     const { jobId } = await params;
+    
     const job = await fetchJobById(jobId) as Job;
     if (!job) return <div className="p-6">Job not found</div>;
 

@@ -53,8 +53,40 @@ _Join us and shape the digital future of the Central Valley._
         title: "IT Support Specialist",
         company: "Fresno General Hospital",
         description: "Provide technical support for hospital staff.",
-        long_description:
-        "Handle support tickets, troubleshoot software and hardware issues, and assist staff with everyday tech problems. Join a fast-paced environment where reliability and patient care go hand in hand.",
+        long_description: `
+
+We're looking for an **IT Support Specialist** to help keep our hospital's technology running smoothly and reliably in a high-pressure environment.
+
+### Responsibilities
+
+- Respond to support tickets and technical inquiries from hospital staff
+- Troubleshoot hardware, software, and network issues across multiple departments
+- Set up and maintain workstations, printers, and other medical IT equipment
+- Escalate critical issues to senior IT staff when needed
+- Provide friendly, solutions-oriented assistance in-person and remotely
+
+### Requirements
+
+- 1+ years of experience in technical support or IT helpdesk
+- Familiarity with Windows, macOS, and basic networking concepts
+- Ability to communicate technical information clearly to non-technical users
+- Comfortable working in a fast-paced, mission-critical environment
+
+### Nice to Have
+
+- Experience with hospital systems (EHR, PACS, etc.)
+- CompTIA A+ or similar certification
+- Familiarity with ticketing tools like **Jira** or **Freshservice**
+
+### Perks
+
+- Work in a purpose-driven, patient-centered environment
+- Opportunities for career growth and internal training
+- Access to hospital wellness and employee assistance programs
+- Paid time off and full medical benefits
+
+_Be the unsung hero that keeps our hospital running._
+`,
         tags: ["Full-time", "On-site", "Entry Level"],
         logo_url: "#FFE5F7",
         location: "Fresno, CA",

@@ -1,12 +1,33 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+'use client'
 
-export function JobCard() {
+import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+interface JobCardProps {
+  title: string;              // Job title (e.g., "Frontend Developer")
+  company: string;            // Company name (e.g., "ValleyTech Co.")
+  description: string;        // Short job summary/description
+  tags: string[];             // List of tags (e.g., ["Full-time", "Remote", "Senior"])
+  iconBgColor?: string;       // Optional background color for the icon block
+  onApply?: () => void;       // Optional click handler for the Apply button
+}
+
+export function JobCard({
+  title,
+  company,
+  description,
+  tags,
+  iconBgColor = "#E1F7E9",
+  onApply,
+}: JobCardProps) {
   return (
     <Card className="mt-4">
       <CardHeader className="flex flex-row justify-between items-start space-y-0">
         <div className="flex gap-4">
-          <div className="w-12 h-12 bg-[#E1F7E9] rounded-lg flex items-center justify-center">
+          <div
+            className="w-12 h-12 rounded-lg flex items-center justify-center"
+            style={{ backgroundColor: iconBgColor }}
+          >
             <svg
               width="24"
               height="24"
@@ -24,22 +45,28 @@ export function JobCard() {
             </svg>
           </div>
           <div>
-            <CardTitle className="text-xl">Sales representative</CardTitle>
-            <p className="text-gray-600 text-sm">Science Inc.</p>
+            <CardTitle className="text-xl">{title}</CardTitle>
+            <p className="text-gray-600 text-sm">{company}</p>
           </div>
         </div>
-        <Button className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white hover:brightness-105">
+        <Button
+          onClick={onApply}
+          className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white hover:brightness-105"
+        >
           Apply <span className="ml-1">→</span>
         </Button>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-700 mt-2">
-          Full-time hours with amazing overtime opportunities! Working in supportive environment with great opportunities to grow.
-        </p>
-        <div className="flex gap-2 mt-4">
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Full-time</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Hybrid</span>
-          <span className="px-3 py-1 bg-gray-100 rounded-full text-sm">Senior</span>
+        <p className="text-gray-700 mt-2">{description}</p>
+        <div className="flex gap-2 mt-4 flex-wrap">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </CardContent>
     </Card>

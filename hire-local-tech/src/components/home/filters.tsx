@@ -34,7 +34,7 @@ export function Filters() {
         />
         <FilterDropdown 
           label="Experience" 
-          options={["Junior", "Mid Level", "Senior", "Lead"]}
+          options={["No experience", "Junior", "Mid Level", "Senior", "Lead"]}
           value={experience}
           onChange={setExperience}
         />

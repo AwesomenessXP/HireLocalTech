@@ -6,18 +6,14 @@ import { X } from "lucide-react"; // shadcn icon
 interface CategoryButtonProps {
   text: string;
   color: string;
-  onClick?: () => void;
   added?: boolean;
+  onToggle: (text: string) => void;
 }
 
-export function CategoryButton({ text, color, onClick, added = false}: CategoryButtonProps) {
-  const [selected, setSelected] = useState(false);
 
-  const handleToggle = () => {    
-    setSelected((prev) => !prev);
-    if (selected && onClick) {
-      onClick(); // Optional: only fire when unselecting
-    }
+export function CategoryButton({ text, color, added, onToggle }: CategoryButtonProps) {
+  const handleToggle = () => {
+    onToggle(text);
   };
 
   return (

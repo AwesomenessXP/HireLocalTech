@@ -1,7 +1,30 @@
+
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { CategoryButton } from "@/components/ui/category-button";
+import { useState } from "react";
 
 export function SearchCategoryArea() {
+
+  const [categories, setCategories] = useState([
+    { name: "Software", selected: true, color: "#E1F7E9" },
+    { name: "IT Support", selected: true, color: "#FFE5F7" },
+    { name: "Sysadmin", selected: true, color: "#FFD580" },
+    { name: "Data Analytics", selected: false, color: "#FAFFA5" },
+    { name: "CRM", selected: false, color: "#E5F3FF" },
+    { name: "Cybersecurity", selected: false, color: "#F0E5FF" },
+  ]);
+
+  const toggleCategory = (name: string) => {
+    setCategories(prev => {
+        return prev.map(cat =>
+          cat.name === name ? { ...cat, selected: !cat.selected } : cat
+        )
+      }
+    );
+  };
+
   return (
       <div className="mt-6 md:absolute md:top-[250px] left-1/2 md:transform md:-translate-x-1/2 w-full">
         {/** search section **/}
@@ -23,22 +46,34 @@ export function SearchCategoryArea() {
 
             {/* Selected Categories (below input + button) */}
             <div className="flex flex-wrap gap-2 items-center">
-              <CategoryButton text="Software" color="#E1F7E9" added={true} />
-              <CategoryButton text="IT Support" color="#FFE5F7" added={true} />
-              <CategoryButton text="Sysadmin" color="#FFE5F7" added={true} />
+              {categories.filter(label => label.selected === true).map((label) => (
+                <CategoryButton 
+                  key={label.name}
+                  text={label.name}
+                  color={label.color}
+                  added={label.selected}
+                  onToggle={toggleCategory}
+                />
+              ))}
             </div>
 
           </div>
 
-          {/** category suggestions **/}
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-            <span className="text-gray-500 whitespace-nowrap">Add more categories</span>
-            <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-              <CategoryButton text="Data Analytics" color="#FAFFA5" />
-              <CategoryButton text="CRM" color="#E5F3FF" />
-              <CategoryButton text="Cybersecurity" color="#F0E5FF" />
-            </div>
+        {/** category suggestions **/}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+          <span className="text-gray-500 whitespace-nowrap">Add more categories</span>
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
+              {categories.filter(label => label.selected === false).map((label) => (
+                <CategoryButton 
+                  key={label.name}
+                  text={label.name}
+                  color={label.color}
+                  added={label.selected}
+                  onToggle={toggleCategory}
+                />
+              ))}
           </div>
+        </div>
 
       </div>
     </div>

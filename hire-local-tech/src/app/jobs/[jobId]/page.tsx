@@ -1,33 +1,20 @@
 // app/jobs/[jobId]/page.tsx
 export const dynamic = 'force-dynamic';
 
-
 import { fetchJobById } from "@/lib/mocks/mockJobs";
 import { ApplyNowButton } from "@/components/jobs/apply-button";
 import { JobBreadcrumb } from "@/components/jobs/job-breadcrumb";
 import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
+import { Job } from "@/types/job";
 
 export type Params = Promise<{ jobId: string }>
 
-export interface Job {
-    id: string;
-    slug: string;
-    title: string;
-    company: string;
-    description: string;
-    long_description: string;
-    tags: string[];
-    logo_url: string;
-    location: string;
-    applicants: number;
-    date_posted: string; // ISO date string
-    salary: [number, number]; // Tuple: [min, max]
-  }
 
   export default async function JobDetailPage({ params }: { params: Params }) {
     const { jobId } = await params;
 
     const job = await fetchJobById(jobId) as Job;
+
     if (!job) return <div className="p-6">Job not found</div>;
 
     return (

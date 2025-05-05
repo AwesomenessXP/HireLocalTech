@@ -4,29 +4,17 @@ import { useRouter } from 'next/navigation';
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getRelativeTime } from "@/lib/utils/date";
-
-interface JobCardProps {
-  id: string;
-  slug: string;
-  title: string;              // Job title (e.g., "Frontend Developer")
-  company: string;            // Company name (e.g., "ValleyTech Co.")
-  description: string;        // Short job summary/description
-  long_description: string;  // Long job description
-  date_posted: string;        // Date posted
-  tags: string[];             // List of tags (e.g., ["Full-time", "Remote", "Senior"])
-  iconBgColor?: string;       // Optional background color for the icon block
-}
+import { Job } from "@/types/job";
 
 export function JobCard({
-  id,
   slug,
   title,
   company,
   description,
   date_posted,
-  tags,
-  iconBgColor = "#E1F7E9",
-}: JobCardProps) {
+  logo_url,
+  tags
+}: Job) {
 
   const router = useRouter();
 
@@ -42,7 +30,7 @@ export function JobCard({
         <div className="flex gap-4">
           <div
             className="w-12 h-12 rounded-lg flex items-center justify-center"
-            style={{ backgroundColor: iconBgColor }}
+            style={{ backgroundColor: logo_url }}
           >
             <svg
               width="24"

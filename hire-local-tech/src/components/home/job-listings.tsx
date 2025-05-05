@@ -1,22 +1,10 @@
 'use client'
 
 import { JobCard } from "./job-card";
-import { useId } from "react";
-interface JobCardProps {
-  id: string;
-  slug: string;
-  title: string;
-  company: string;
-  description: string;
-  date_posted: string;
-  long_description: string;
-  tags: string[];
-  iconBgColor?: string;
-  onApply?: () => void;
-}
+import { Job } from "@/types/job";
 
 interface JobListingsProps {
-  jobs: JobCardProps[];
+  jobs: Job[];
 }
 
 export function JobListings({ jobs }: JobListingsProps) {

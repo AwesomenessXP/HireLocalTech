@@ -1,6 +1,7 @@
 // lib/mockJobs.ts
+import { Job } from "@/types/job";
 
-export const mockJobs = [
+export const mockJobs: Job[] = [
     {
         id: "1",
         slug: "frontend-developer-valleytech-co",
@@ -475,7 +476,7 @@ We're looking for a **Machine Learning Engineer** to develop predictive models t
 - Flexible work arrangements and a mission-driven team
 
 _Use AI to grow something real — for farmers, for food, for the future._
-`,        logo_url: "#F3F0FF",
+`,      logo_url: "#F3F0FF",
         location: "Stockton, CA",
         applicants: 47,
         date_posted: "2025-04-25T08:00:00Z",

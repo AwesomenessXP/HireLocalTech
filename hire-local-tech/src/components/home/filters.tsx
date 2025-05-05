@@ -1,14 +1,21 @@
 'use client'
 
 import { FilterDropdown } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useFilters } from "@/context/filter-context";
 
 export function Filters() {
-  const [datePosted, setDatePosted] = useState("");
-  const [salary, setSalary] = useState("");
-  const [jobType, setJobType] = useState("");
-  const [experience, setExperience] = useState("");
-  const [location, setLocation] = useState("");
+  const {
+    datePosted,
+    salary,
+    jobType,
+    experience,
+    location,
+    setDatePosted,
+    setSalary,
+    setJobType,
+    setExperience,
+    setLocation,
+  } = useFilters();
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-4 py-4">

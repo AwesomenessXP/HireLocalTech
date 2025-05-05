@@ -81,7 +81,7 @@ export function MainContent() {
   
       {/* Results Count */}
       <div className="mt-4 sm:mt-8 text-gray-600 text-sm sm:text-base ">
-        We&apos;ve found <span className="font-medium">10</span> job postings
+        We&apos;ve found <span className="font-medium">{jobCards.length}</span> job postings
       </div>
   
       {/* Job Cards */}

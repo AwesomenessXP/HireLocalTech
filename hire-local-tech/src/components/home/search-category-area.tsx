@@ -4,26 +4,11 @@
 import { Button } from "@/components/ui/button";
 import { CategoryButton } from "@/components/ui/category-button";
 import { useState } from "react";
+import { useCategories } from "@/context/category-context";
+
 
 export function SearchCategoryArea() {
-
-  const [categories, setCategories] = useState([
-    { name: "Software", selected: true, color: "#E1F7E9" },
-    { name: "IT Support", selected: true, color: "#FFE5F7" },
-    { name: "Sysadmin", selected: true, color: "#FFD580" },
-    { name: "Data Analytics", selected: false, color: "#FAFFA5" },
-    { name: "CRM", selected: false, color: "#E5F3FF" },
-    { name: "Cybersecurity", selected: false, color: "#F0E5FF" },
-  ]);
-
-  const toggleCategory = (name: string) => {
-    setCategories(prev => {
-        return prev.map(cat =>
-          cat.name === name ? { ...cat, selected: !cat.selected } : cat
-        )
-      }
-    );
-  };
+  const { categories, toggleCategory } = useCategories();
 
   return (
       <div className="mt-6 md:absolute md:top-[250px] left-1/2 md:transform md:-translate-x-1/2 w-full">
@@ -46,7 +31,7 @@ export function SearchCategoryArea() {
 
             {/* Selected Categories (below input + button) */}
             <div className="flex flex-wrap gap-2 items-center">
-              {categories.filter(label => label.selected === true).map((label) => (
+              {categories.filter(label => label.selected).map((label) => (
                 <CategoryButton 
                   key={label.name}
                   text={label.name}
@@ -63,7 +48,7 @@ export function SearchCategoryArea() {
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
           <span className="text-gray-500 whitespace-nowrap">Add more categories</span>
           <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-              {categories.filter(label => label.selected === false).map((label) => (
+              {categories.filter(label => !label.selected).map((label) => (
                 <CategoryButton 
                   key={label.name}
                   text={label.name}

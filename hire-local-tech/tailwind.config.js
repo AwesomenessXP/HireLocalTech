@@ -1,16 +1,12 @@
-// tailwind.config.js
-// ✅ Tailwind v4 correct usage
-import defaultTheme from 'tailwindcss/defaultTheme'
-
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
-  theme: {
-    extend: {
-      colors: {
-        // your overrides (optional)
-        // gray: { 200: '...' } if needed
-      },
+    content: [
+      "./app/**/*.{js,ts,jsx,tsx}",
+      "./pages/**/*.{js,ts,jsx,tsx}",
+      "./components/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+      extend: {},
     },
-  },
-  plugins: [require('@tailwindcss/typography')],
-}
+    plugins: [require('@tailwindcss/typography')],
+  };

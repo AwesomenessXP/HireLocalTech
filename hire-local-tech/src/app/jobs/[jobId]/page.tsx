@@ -8,7 +8,7 @@ import { MarkdownRenderer } from "@/components/ui/markdown-renderer";
 export default async function JobDetailPage({ params }: { params: { jobId: string } }) {
     const { jobId } = await params;
 
-    const job = await fetchJobById(jobId);
+    const job = fetchJobById(jobId);
 
     if (!job) return <div className="p-6">Job not found</div>;
 

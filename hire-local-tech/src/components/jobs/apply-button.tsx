@@ -18,7 +18,7 @@ export function ApplyNowButton() {
     <Button
       onClick={handleApply}
       disabled={isApplying}
-      className="bg-[#4F46E5] text-white hover:bg-[#4338CA] px-6 py-2 rounded-full font-medium"
+      className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white hover:bg-[#4338CA] px-6 py-2 rounded-full font-medium"
     >
       {isApplying ? (
         <span className="flex items-center">

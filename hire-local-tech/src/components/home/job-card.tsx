@@ -25,8 +25,13 @@ export function JobCard({
   const postedAgo = getRelativeTime(date_posted);
 
   return (
-    <Card className="mt-4 hover:shadow-md transition cursor-pointer" onClick={handleCardClick}>
-      <CardHeader className="flex flex-row justify-between items-start space-y-0">
+    <Card
+      className="mt-4 hover:shadow-md transition cursor-pointer flex flex-col justify-between"
+      onClick={handleCardClick}
+    >
+      {/* Card Header */}
+      <CardHeader className="flex flex-col sm:flex-row sm:justify-between sm:items-start space-y-4 sm:space-y-0">
+        {/* Left: Logo + Job Info */}
         <div className="flex gap-4">
           <div
             className="w-12 h-12 rounded-lg flex items-center justify-center"
@@ -54,18 +59,25 @@ export function JobCard({
             <p className="text-gray-400 text-xs mt-1">Posted {postedAgo}</p>
           </div>
         </div>
-
-        <Button
-          onClick={handleCardClick}
-          className="bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white hover:brightness-105"
-        >
-          Apply <span className="ml-1">→</span>
-        </Button>
+  
+        {/* Desktop-only Apply Button */}
+        <div className="hidden sm:block">
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleCardClick();
+            }}
+            className="bg-[#4F46E5] text-white hover:brightness-105"
+          >
+            View Job <span className="ml-1">→</span>
+          </Button>
+        </div>
       </CardHeader>
-
-      <CardContent>
-        <p className="text-gray-700 mt-2">{description}</p>
-        <div className="flex gap-2 mt-4 flex-wrap">
+  
+      {/* Card Content */}
+      <CardContent className="flex flex-col gap-4">
+        <p className="text-gray-700">{description}</p>
+        <div className="flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <span
               key={tag}
@@ -74,6 +86,16 @@ export function JobCard({
               {tag}
             </span>
           ))}
+        </div>
+  
+        {/* Mobile-only Apply Button */}
+        <div className="block sm:hidden mt-4">
+          <Button
+            onClick={handleCardClick}
+            className="bg-[#4F46E5] w-full text-white hover:brightness-105"
+          >
+            View Job <span className="ml-1">→</span>
+          </Button>
         </div>
       </CardContent>
     </Card>

@@ -3,7 +3,6 @@
 
 import { Button } from "@/components/ui/button";
 import { CategoryButton } from "@/components/ui/category-button";
-import { useState } from "react";
 import { useCategories } from "@/context/category-context";
 
 
@@ -44,21 +43,23 @@ export function SearchCategoryArea() {
 
           </div>
 
-        {/** category suggestions **/}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
-          <span className="text-gray-500 whitespace-nowrap">Add more categories</span>
-          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
-              {categories.filter(label => !label.selected).map((label) => (
-                <CategoryButton 
-                  key={label.name}
-                  text={label.name}
-                  color={label.color}
-                  added={label.selected}
-                  onToggle={toggleCategory}
-                />
-              ))}
-          </div>
+      {/** category suggestions **/}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+        <span className="text-gray-500 whitespace-nowrap">Add more categories</span>
+        <div className="flex flex-wrap gap-2">
+          {categories
+            .filter(label => !label.selected)
+            .map((label) => (
+              <CategoryButton 
+                key={label.name}
+                text={label.name}
+                color={label.color}
+                added={label.selected}
+                onToggle={toggleCategory}
+              />
+            ))}
         </div>
+      </div>
 
       </div>
     </div>

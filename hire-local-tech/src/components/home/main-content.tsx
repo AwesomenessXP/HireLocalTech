@@ -1,8 +1,10 @@
 import { Filters } from "./filters";
 import { JobListings } from "./job-listings";
 import { mockJobs } from "@/lib/mocks/mockJobs";
+import { Job } from "@/types/job";
+
 export function MainContent() {
-  const jobCards = mockJobs;
+  const jobCards: Job[] = mockJobs;
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 max-w-4xl mx-auto pb-12 px-4 py-12"> {/* Added pb-12 */}

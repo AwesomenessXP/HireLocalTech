@@ -8,6 +8,7 @@ export const mockJobs = [
         company: "ValleyTech Co.",
         description: "Create modern web apps using React and Tailwind.",
         long_description: `
+
 We're looking for a **Frontend Developer** to help us build beautiful, scalable web applications for startups across the Central Valley.
 
 ### Responsibilities
@@ -178,6 +179,6 @@ _Join us and shape the digital future of the Central Valley._
     },
 ];
 
-export function fetchJobById(slug: string) {
+export async function fetchJobById(slug: string) {
     return mockJobs.find((job) => job.slug === slug) || null;
 }

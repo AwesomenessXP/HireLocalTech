@@ -33,7 +33,7 @@ export function Filters() {
           <div className="flex flex-wrap gap-2 sm:gap-2">
             <div className="min-w-[150px] flex-1 sm:flex-none sm:w-48">
               <FilterDropdown
-                label="Posted"
+                label="Date Posted"
                 options={["Last 24 hours", "Last 7 days", "Last 30 days"]}
                 value={datePosted}
                 onChange={setDatePosted}

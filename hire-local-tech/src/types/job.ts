@@ -8,6 +8,7 @@ export interface Job {
     tags: string[];
     logo_url: string;
     location: string;
+    education: string;
     applicants: number;
     date_posted: string; // ISO date string
     salary: [number, number]; // Tuple: [min, max]

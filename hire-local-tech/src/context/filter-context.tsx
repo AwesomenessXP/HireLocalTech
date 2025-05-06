@@ -8,6 +8,7 @@ interface FilterState {
   salary: string;
   jobType: string;
   experience: string;
+  education: string;
   location: string;
 }
 
@@ -16,6 +17,7 @@ interface FilterContextValue extends FilterState {
   setSalary: (val: string) => void;
   setJobType: (val: string) => void;
   setExperience: (val: string) => void;
+  setEducation: (val: string) => void;
   setLocation: (val: string) => void;
   resetFilters: () => void;
 }
@@ -27,6 +29,7 @@ const initialState: FilterState = {
   salary: "",
   jobType: "",
   experience: "",
+  education: "",
   location: "",
 };
 
@@ -35,6 +38,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
   const [salary, setSalary] = useState(initialState.salary);
   const [jobType, setJobType] = useState(initialState.jobType);
   const [experience, setExperience] = useState(initialState.experience);
+  const [education, setEducation] = useState(initialState.education);
   const [location, setLocation] = useState(initialState.location);
 
   const resetFilters = () => {
@@ -42,7 +46,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
     setSalary("");
     setJobType("");
     setExperience("");
-    setLocation("");
+    setEducation("");
   };
 
   return (
@@ -52,11 +56,13 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         salary,
         jobType,
         experience,
+        education,
         location,
         setDatePosted,
         setSalary,
         setJobType,
         setExperience,
+        setEducation,
         setLocation,
         resetFilters,
       }}

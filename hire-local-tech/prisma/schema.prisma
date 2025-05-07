@@ -16,7 +16,13 @@ model User {
 
   // Optional: Relationships to other models
   profile    Profile?
-  jobs       Job[]    @relation("PostedJobs")
+  jobs       Job[]    @relation("UserJobs")
+  applications JobApplication[] @relation("UserApplications")
+  resumes    Resume[] @relation("UserResumes")
+  sessions   Session[] @relation("UserSessions")
+  savedJobs   SavedJob[] @relation("UserSavedJobs")
+
+  @@map("users")
 }
 
 model Profile {
@@ -39,6 +45,8 @@ model Profile {
   is_employer      Boolean  @default(false)
   company_name     String?
   company_website  String?
+
+  @@map("profiles")
 }
 
 model Job {
@@ -62,30 +70,95 @@ model Job {
 
   // Optional: link to a user/poster
   postedById      String?   // foreign key pointing to User.id
-  postedBy        User?     @relation("PostedJobs", fields: [postedById], references: [id])
+  postedBy        User?     @relation("UserJobs", fields: [postedById], references: [id])
+  applications    JobApplication[] @relation("JobApplications")
+  savedJobs       SavedJob[] @relation("JobsSaved")
+  
+  @@map("jobs")
+}
+
+model JobApplication {
+  id         String           @id @default(uuid())
+  jobId      String
+  seekerId   String
+  resumeUrl  String?
+  createdAt  DateTime         @default(now())
+  status     ApplicationStatus @default(PENDING)
+
+  // Relations
+  job      Job  @relation("JobApplications", fields: [jobId], references: [id])
+  seeker   User @relation("UserApplications", fields: [seekerId], references: [id])
+
+  @@map("job_applications")
+}
+
+model Resume {
+  id         String   @id @default(uuid())
+  seekerId   String
+  fileUrl    String
+  fileName   String?
+  uploadedAt DateTime @default(now())
+
+  @@unique([seekerId])
+  seeker     User     @relation("UserResumes", fields: [seekerId], references: [id], onDelete: Cascade)
+
+  @@map("resumes")
+}
+
+model Session {
+  id         String   @id @default(uuid())
+  userId     String
+  token      String   @unique
+  createdAt  DateTime @default(now())
+  expiresAt  DateTime?
+
+  user       User     @relation("UserSessions", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model SavedJob {
+  id        String   @id @default(uuid())
+  seekerId  String
+  jobId     String
+  savedAt   DateTime @default(now())
+
+  seeker    User  @relation("UserSavedJobs", fields: [seekerId], references: [id], onDelete: Cascade)
+  job       Job   @relation("JobsSaved", fields: [jobId], references: [id], onDelete: Cascade)
+
+  @@unique([seekerId, jobId])
+  @@map("saved_jobs")
 }
 
 enum Role {
-  SEEKER
-  POSTER
+  SEEKER @map("SEEKER")
+  POSTER @map("POSTER")
 }
 
 enum ExperienceLevel {
-  Junior
-  Mid_level
-  Senior
-  Lead
+  Junior @map("JUNIOR")
+  Mid_level @map("MID-LEVEL")
+  Senior @map("SENIOR")
+  Lead @map("LEAD")
 }
 
 enum EmploymentType {
-  Full_time
-  Part_time
-  Contract
-  Internship
+  FULL_TIME @map("Full-Time")
+  PART_TIME @map("Part-Time")
+  CONTRACT @map("Contract")
+  INTERNSHIP @map("Internship")
+  PROJECT_BASED @map("Project-Based")
 }
 
 enum Remote {
-  On_site
-  Hybrid
-  Remote
+  ON_SITE @map("On-Site")
+  HYBRID @map("Hybrid")
+  REMOTE @map("Remote")
+}
+
+enum ApplicationStatus {
+  PENDING
+  VIEWED
+  REJECTED
+  ACCEPTED
 }

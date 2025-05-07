@@ -7,7 +7,85 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  name       String?
+  role       Role
+  created_at DateTime @default(now())
+
+  // Optional: Relationships to other models
+  profile    Profile?
+  jobs       Job[]    @relation("PostedJobs")
+}
+
+model Profile {
+  userId         String   @id
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Shared fields
+  bio            String?
+  location       String?
+  avatar_url     String?
+  updated_at     DateTime @default(now())
+
+  // Job seeker fields
+  experience_level ExperienceLevel?
+  skills           String[] @default([])
+  portfolio_url    String?
+  resume_url       String?
+
+  // Job poster fields
+  is_employer      Boolean  @default(false)
+  company_name     String?
+  company_website  String?
+}
+
+model Job {
+  id              String    @id @default(uuid())
+  url             String?    @unique
+  slug            String    @unique
+  title           String
+  company         String
+  description     String
+  long_description String
+  employment_type EmploymentType
+  remote          Remote
+  experience_level ExperienceLevel
+  logo_url        String?
+  location        String
+  applicants      Int       @default(0)
+  created_at      DateTime  @default(now())
+
+  salary_min      Float
+  salary_max      Float
+
+  // Optional: link to a user/poster
+  postedById      String?   // foreign key pointing to User.id
+  postedBy        User?     @relation("PostedJobs", fields: [postedById], references: [id])
+}
+
 enum Role {
   SEEKER
   POSTER
-} 
+}
+
+enum ExperienceLevel {
+  Junior
+  Mid_level
+  Senior
+  Lead
+}
+
+enum EmploymentType {
+  Full_time
+  Part_time
+  Contract
+  Internship
+}
+
+enum Remote {
+  On_site
+  Hybrid
+  Remote
+}

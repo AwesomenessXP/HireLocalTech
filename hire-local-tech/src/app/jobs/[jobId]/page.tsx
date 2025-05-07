@@ -24,7 +24,7 @@ export default async function JobDetailPage({ params }: { params: Params }) {
           <div className="flex items-center gap-4">
             <div
               className="w-12 h-12 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: job.logo_url }}
+              style={{ backgroundColor: job.logo_url ? job.logo_url : "#808080" }}
             >
               <svg
                 width="24"
@@ -76,11 +76,24 @@ export default async function JobDetailPage({ params }: { params: Params }) {
   
         {/* Tags */}
         <div className="flex gap-2 mt-6 flex-wrap">
-          {job.tags.map((tag) => (
-            <span key={tag} className="px-3 py-1 bg-gray-100 rounded-full text-sm">
-              {tag}
+        <span
+              key={job.employment_type}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {job.employment_type}
             </span>
-          ))}
+            <span
+              key={job.remote}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {job.remote}
+            </span>
+            <span
+              key={job.experience_level}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {job.experience_level}
+            </span>
         </div>
       </main>
     );

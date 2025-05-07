@@ -1,10 +1,8 @@
-
 'use client'
 
 import { Button } from "@/components/ui/button";
 import { CategoryButton } from "@/components/ui/category-button";
 import { useCategories } from "@/context/category-context";
-
 
 export function SearchCategoryArea() {
   const { categories, toggleCategory } = useCategories();

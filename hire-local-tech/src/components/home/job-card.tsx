@@ -11,9 +11,11 @@ export function JobCard({
   title,
   company,
   description,
-  date_posted,
+  created_at,
   logo_url,
-  tags
+  employment_type,
+  remote,
+  experience_level,
 }: Job) {
 
   const router = useRouter();
@@ -22,7 +24,7 @@ export function JobCard({
     router.push(`/jobs/${slug}`);
   };
 
-  const postedAgo = getRelativeTime(date_posted);
+  const postedAgo = getRelativeTime(created_at);
 
   return (
     <Card
@@ -35,7 +37,7 @@ export function JobCard({
         <div className="flex gap-4">
           <div
             className="w-12 h-12 rounded-lg flex items-center justify-center"
-            style={{ backgroundColor: logo_url }}
+            style={{ backgroundColor: logo_url ? logo_url : "#808080" }}
           >
             <svg
               width="24"
@@ -78,14 +80,24 @@ export function JobCard({
       <CardContent className="flex flex-col gap-4">
         <p className="text-gray-700">{description}</p>
         <div className="flex gap-2 flex-wrap">
-          {tags.map((tag) => (
             <span
-              key={tag}
+              key={employment_type}
               className="px-3 py-1 bg-gray-100 rounded-full text-sm"
             >
-              {tag}
+              {employment_type}
             </span>
-          ))}
+            <span
+              key={remote}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {remote}
+            </span>
+            <span
+              key={experience_level}
+              className="px-3 py-1 bg-gray-100 rounded-full text-sm"
+            >
+              {experience_level}
+            </span>
         </div>
   
         {/* Mobile-only Apply Button */}

@@ -1,7 +1,5 @@
 # HireLocalTech
 
-# Hire Local Tech
-
 **Hire Local Tech** is on a mission to help talented people land legit tech work — without leaving home. We believe you shouldn’t have to move to a big city just to build a solid career in tech. Small towns deserve great talent too — and we’re here to make that happen.
 
 This isn’t some generic job board. It’s a gritty, no-BS launchpad for the Central Valley’s next generation of builders. We’re connecting local devs, students, and self-taught hackers with real projects, real startups, and real opportunities — no recruiters, no corporate fluff. Just straight-up work that matters.

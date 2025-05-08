@@ -7,7 +7,7 @@ import { JobPagination } from "./job-pagination";
 import { useFilters } from "@/context/filter-context";
 import { useCategories } from "@/context/category-context";
 import { filterJobs } from "@/lib/utils/filterJobs";
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 interface PaginatedJobListingsProps {
   jobs: Job[];
@@ -27,6 +27,12 @@ export function PaginatedJobListings({ jobs }: PaginatedJobListingsProps) {
 
   return (
     <>
+      {/* Results Count */}
+      <div className="mt-4 sm:mt-8 text-gray-600 text-sm sm:text-base ">
+        We&apos;ve found <span className="font-medium">{currentJobs.length}</span> 
+        {currentJobs.length === 1 ? " job posting" : " job postings"}
+      </div>
+
       <JobListings jobs={currentJobs} />
       
       {totalPages > 1 && (

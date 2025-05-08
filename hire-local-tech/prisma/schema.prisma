@@ -7,6 +7,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ========================
+// Core Models
+// ========================
+
 model User {
   id         String   @id @default(uuid())
   email      String   @unique
@@ -49,6 +53,10 @@ model Profile {
   @@map("profiles")
 }
 
+// ========================
+// Job Related Models
+// ========================
+
 model Job {
   id              String    @id @default(uuid())
   url             String?    @unique
@@ -67,6 +75,8 @@ model Job {
 
   salary_min      Float
   salary_max      Float
+  categories      Category[]
+  education_type  EducationType[]
 
   // Optional: link to a user/poster
   postedById      String?   // foreign key pointing to User.id
@@ -91,6 +101,10 @@ model JobApplication {
 
   @@map("job_applications")
 }
+
+// ========================
+// Resume & Session Models
+// ========================
 
 model Resume {
   id         String   @id @default(uuid())
@@ -117,6 +131,10 @@ model Session {
   @@map("sessions")
 }
 
+// ========================
+// Saved Jobs Model
+// ========================
+
 model SavedJob {
   id        String   @id @default(uuid())
   seekerId  String
@@ -130,16 +148,20 @@ model SavedJob {
   @@map("saved_jobs")
 }
 
+// ========================
+// Enums
+// ========================
+
 enum Role {
   SEEKER @map("SEEKER")
   POSTER @map("POSTER")
 }
 
 enum ExperienceLevel {
-  Junior @map("JUNIOR")
-  Mid_level @map("MID-LEVEL")
-  Senior @map("SENIOR")
-  Lead @map("LEAD")
+  JUNIOR @map("Junior")
+  MID_LEVEL @map("Mid-Level")
+  SENIOR @map("Senior")
+  LEAD @map("Lead")
 }
 
 enum EmploymentType {
@@ -161,4 +183,20 @@ enum ApplicationStatus {
   VIEWED
   REJECTED
   ACCEPTED
+}
+
+enum Category {
+  SOFTWARE @map("Software")
+  IT_SUPPORT @map("IT Support")
+  SYSADMIN @map("Sysadmin")
+  DATA_ANALYTICS @map("Data Analytics")
+  CRM @map("CRM")
+}
+
+enum EducationType {
+  NO_DEGREE @map("No degree")
+  ASSOCIATES @map("Associate")
+  BACHELORS @map("Bachelor")
+  MASTERS @map("Master")
+  DOCTORATE @map("Doctorate")
 }

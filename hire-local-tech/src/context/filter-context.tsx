@@ -3,7 +3,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-interface FilterState {
+export interface FilterState {
   datePosted: string;
   salary: string;
   jobType: string;
